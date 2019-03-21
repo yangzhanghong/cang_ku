@@ -1,0 +1,59 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.test</groupId>
+  <artifactId>own-name</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  
+  <properties>
+  	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  	<failOnMissingWebXml>false</failOnMissingWebXml>
+  </properties>
+  
+  <dependencies>
+  	<!-- Servlet API -->
+  	<dependency>
+  		<groupId>javax.servlet</groupId>
+  		<artifactId>javax.servlet-api</artifactId>
+  		<version>3.1.0</version>
+  		<scope>provided</scope>
+  	</dependency>
+  </dependencies>
+  
+  <build>
+    <finalName>my-WebApp02</finalName>
+    
+    <!-- 将Web项目自动部署到tomcat服务器的相关 配置信息-->
+      <!-- 将WebProject项目打包成WebProject.war自动部署到tomcat服务器的webapps目录下面 -->
+    <!-- <finalName>WebProject</finalName> -->
+    <plugins>
+          <plugin>
+              <groupId>org.codehaus.cargo</groupId>
+              <artifactId>cargo-maven2-plugin</artifactId>
+                <version>1.2.3</version>
+                <configuration>
+                    <container>
+                          <!-- 指明使用的tomcat服务器版本 -->
+                        <containerId>tomcat7x</containerId>
+                        <!--指明tomcat服务器的安装目录 -->
+                        <home>D:\360安全浏览器下载\class\Tomcat</home>
+                    </container>
+                    <configuration>
+                        <type>existing</type>
+                        <!--指明tomcat服务器的安装目录 -->
+                        <home>D:\360安全浏览器下载\class\Tomcat</home>
+                    </configuration>
+                </configuration>
+                <executions>  
+                  <execution>  
+                      <id>cargo-run</id>  
+                      <phase>install</phase>  
+                      <goals>  
+                          <goal>run</goal>  
+                      </goals>  
+                  </execution>  
+              </executions>
+          </plugin>
+      </plugins>
+  </build>
+</project>
